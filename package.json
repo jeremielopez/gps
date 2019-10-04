@@ -1,0 +1,21 @@
+{
+  "name": "gps",
+  "version": "1.0.0",
+  "description": "Chemin le plus court",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/index.ts"
+  },
+  "author": "Jérémie Lopez <jeremie.lopez.marignane@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "ngraph.generators": "^18.0.1",
+    "ngraph.graph": "^18.0.1",
+    "ngraph.random": "^1.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  }
+}
