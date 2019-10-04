@@ -8,17 +8,17 @@ export class Graph {
         this.keys = keys;
     }
 
-    public dijkstra() {
+    public dijkstra(startPoint: string, endPoint: string) {
         const start = this.keys
-            .find(element => element.name === 'start');
+            .find(element => element.name === startPoint);
 
         this.keys
-            .find(element => element.name === 'start')
+            .find(element => element.name === startPoint)
             .nodes
-            .push(new Node('finish', Infinity));
+            .push(new Node(endPoint, Infinity));
 
         const nodes = this.keys
-            .find(element => element.name === 'start')
+            .find(element => element.name === startPoint)
             .nodes
 
         const parents = { finish: null };
@@ -53,9 +53,9 @@ export class Graph {
             node = Node.lowestCostNode(nodes, processed);
         }
 
-        let optimalPath = ['finish'];
+        let optimalPath = [endPoint];
 
-        let parent = parents.finish;
+        let parent = parents[endPoint];
 
         while (parent) {
             optimalPath.push(parent);
@@ -64,8 +64,10 @@ export class Graph {
 
         optimalPath.reverse();
 
+        optimalPath[0] = startPoint;
+
         const results = {
-            distance: nodes.find(element => element.target === 'finish').weight,
+            distance: nodes.find(element => element.target === endPoint).weight,
             path: optimalPath
         };
 
